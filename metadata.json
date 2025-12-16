@@ -1,0 +1,5 @@
+{
+  "name": "DreamQuest RPG",
+  "description": "An infinite, AI-narrated text adventure game where every turn generates a unique story segment and a corresponding visual scene using Gemini models.",
+  "requestFramePermissions": []
+}
