@@ -30,7 +30,7 @@ const RESPONSE_SCHEMA: Schema = {
         },
         required: ["id", "text"],
       },
-      description: "2 to 4 distinct actions the player can take.",
+      description: "Generate exactly 6 distinct and creative actions the player can take.",
     },
     hpChange: {
       type: Type.INTEGER,

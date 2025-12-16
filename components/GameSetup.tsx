@@ -16,7 +16,31 @@ const DEFAULT_THEMES_KEYS = [
   "Cosmic Horror",
   "Post-Apocalyptic Survival",
   "Victorian Mystery",
-  "Wacky Cartoon Physics"
+  "Wacky Cartoon Physics",
+  "Space Opera",
+  "Western Frontier",
+  "Ninja Assassin",
+  "Zombie Outbreak",
+  "Pirate Adventure",
+  "Steampunk Revolution",
+  "Fairy Tale Twist",
+  "Noir Thriller",
+  "Superhero Origin",
+  "Time Travel Paradox",
+  "Vampire Romance",
+  "Ancient Egypt",
+  "Viking Saga",
+  "Jurassic Survival",
+  "Deep Sea Exploration",
+  "Haunted Mansion",
+  "Alien Invasion",
+  "School of Magic",
+  "Spy Espionage",
+  "Gladiator Arena",
+  "Jungle Expedition",
+  "Robot Uprising",
+  "Medieval Politics",
+  "Dream World"
 ] as const;
 
 export const GameSetup: React.FC<GameSetupProps> = ({ onStart, onLoad, isGenerating }) => {
@@ -63,16 +87,16 @@ export const GameSetup: React.FC<GameSetupProps> = ({ onStart, onLoad, isGenerat
         ))}
       </div>
 
-      <div className="w-full max-w-md p-8 bg-slate-800/50 backdrop-blur-md rounded-2xl border border-slate-700 shadow-2xl space-y-8 fade-in">
-        <div className="text-center">
+      <div className="w-full max-w-md p-8 bg-slate-800/50 backdrop-blur-md rounded-2xl border border-slate-700 shadow-2xl space-y-8 fade-in flex flex-col max-h-[90vh]">
+        <div className="text-center shrink-0">
           <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-2">
             {t.title}
           </h1>
           <p className="text-slate-400">{t.subtitle}</p>
         </div>
 
-        <div className="space-y-4">
-          <div>
+        <div className="space-y-4 flex-1 flex flex-col min-h-0">
+          <div className="shrink-0">
             <label className="block text-sm font-bold text-slate-300 mb-1">{t.charName}</label>
             <input
               type="text"
@@ -83,14 +107,15 @@ export const GameSetup: React.FC<GameSetupProps> = ({ onStart, onLoad, isGenerat
             />
           </div>
 
-          <div>
+          <div className="flex-1 flex flex-col min-h-0">
             <label className="block text-sm font-bold text-slate-300 mb-2">{t.selectTheme}</label>
-            <div className="grid grid-cols-2 gap-2 mb-3">
+            {/* Scrollable Container for Themes */}
+            <div className="grid grid-cols-2 gap-2 mb-3 overflow-y-auto pr-2 custom-scrollbar min-h-0">
               {DEFAULT_THEMES_KEYS.map((key) => (
                 <button
                   key={key}
                   onClick={() => { setSelectedThemeKey(key); setCustomTheme(''); }}
-                  className={`text-xs p-2 rounded-md transition-all ${
+                  className={`text-xs p-3 rounded-md transition-all text-center flex items-center justify-center ${
                     selectedThemeKey === key && !customTheme 
                       ? 'bg-purple-600 text-white shadow-lg scale-105' 
                       : 'bg-slate-700 text-slate-300 hover:bg-slate-600'
@@ -105,12 +130,12 @@ export const GameSetup: React.FC<GameSetupProps> = ({ onStart, onLoad, isGenerat
               value={customTheme}
               onChange={(e) => setCustomTheme(e.target.value)}
               placeholder={t.customTheme}
-              className="w-full px-4 py-2 bg-slate-900/80 border border-slate-600 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none text-sm text-white"
+              className="w-full px-4 py-2 bg-slate-900/80 border border-slate-600 rounded-lg focus:ring-2 focus:ring-purple-500 outline-none text-sm text-white shrink-0"
             />
           </div>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3 shrink-0">
           <button
             onClick={handleStart}
             disabled={!name.trim() || isGenerating}
